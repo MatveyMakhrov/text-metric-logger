@@ -26,9 +26,9 @@ int main() {
 
     std::thread simulator([&]() {
         std::default_random_engine gen;
-        std::uniform_real_distribution<double> cpuDist(0.0, 2.0);           // до 2 ядер
+        std::uniform_real_distribution<double> cpuDist(0.0, 2.0);           // up to 2 cores
         std::uniform_int_distribution<int> reqDist(0, 100);
-        std::uniform_real_distribution<float> tempDist(35.0f, 60.0f);       // градусы
+        std::uniform_real_distribution<float> tempDist(35.0f, 60.0f);       // degrees
         std::uniform_int_distribution<int> errDist(0, 5);
         std::uniform_real_distribution<double> memDist(0.0, 16.0);          // GB
         std::uniform_int_distribution<int> diskDist(0, 500);                // MB/s
