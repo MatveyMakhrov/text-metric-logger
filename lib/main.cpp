@@ -8,7 +8,6 @@
 int main() {
     MetricManager manager("metrics_output.txt");
 
-    // Создание метрик
     auto cpuUtil = std::make_shared<Metric<double>>("CPU", Metric<double>::Aggregation::Avg);
     auto httpReqs = std::make_shared<Metric<int>>("HTTP requests RPS");
     auto temp = std::make_shared<Metric<float>>("Temperature", Metric<float>::Aggregation::Avg);
@@ -16,7 +15,6 @@ int main() {
     auto memory = std::make_shared<Metric<double>>("Memory Usage", Metric<double>::Aggregation::Avg);
     auto diskIO = std::make_shared<Metric<int>>("Disk IO");
 
-    // Регистрация метрик
     manager.registerMetric(cpuUtil);
     manager.registerMetric(httpReqs);
     manager.registerMetric(temp);
@@ -26,10 +24,9 @@ int main() {
 
     std::atomic<bool> running{ true };
 
-    // Поток, имитирующий генерацию событий
     std::thread simulator([&]() {
         std::default_random_engine gen;
-        std::uniform_real_distribution<double> cpuDist(0.0, 4.0);           // до 4 ядер
+        std::uniform_real_distribution<double> cpuDist(0.0, 2.0);           // до 2 ядер
         std::uniform_int_distribution<int> reqDist(0, 100);
         std::uniform_real_distribution<float> tempDist(35.0f, 60.0f);       // градусы
         std::uniform_int_distribution<int> errDist(0, 5);

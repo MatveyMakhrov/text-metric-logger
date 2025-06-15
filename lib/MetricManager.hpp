@@ -39,8 +39,8 @@ public:
 private:
     std::vector<std::shared_ptr<IMetric>> metrics;
     std::mutex mtx;
-    std::string outputFilename;  // имя файла
-    std::ofstream fileStream;    // поток для записи
+    std::string outputFilename;
+    std::ofstream fileStream;
     std::mutex fileMtx;
     int interval;
     std::atomic<bool> running;
